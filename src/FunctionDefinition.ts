@@ -7,6 +7,7 @@ export class FunctionDefinition
     m_signature : string = "";
     m_summary : string = "";
     m_params : string = "";
+    m_return : string = "";
 
     static s_definitionMap : Map<string,FunctionDefinition> = new Map();
     
@@ -32,9 +33,14 @@ export class FunctionDefinition
         this.m_params += ("\n@PARAM " + param);
     }
 
-    GetSummaryWithParams() : string
+    AddReturn(param: string)
     {
-        return (this.m_summary + "\n" + this.m_params);
+        this.m_return += ("\n@RETURN " + param);
+    }
+
+    GetSummaryWithParamsAndReturn() : string
+    {
+        return (this.m_summary + "\n" + this.m_params + "\n" + this.m_return);
     }
 
     static GetFunctionDefinition(name : string) : FunctionDefinition

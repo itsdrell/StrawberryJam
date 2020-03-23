@@ -68,7 +68,7 @@ export function activate(context: vscode.ExtensionContext)
 				[
 					{
 						label: "minX",
-						documentation: foundDefinition.GetSummaryWithParams()
+						documentation: foundDefinition.GetSummaryWithParamsAndReturn()
 					},
 				]
 			}];

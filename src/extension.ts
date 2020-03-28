@@ -50,7 +50,7 @@ export function activate(context: vscode.ExtensionContext)
 	// using wildcard to get it working for now
 	context.subscriptions.push(vscode.languages.registerSignatureHelpProvider("*", 
 	{	
-		provideSignatureHelp(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken): vscode.SignatureHelp
+		provideSignatureHelp(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken): vscode.SignatureHelp | null
 		{
 			let filename = document.fileName;
             let lineText = document.lineAt(position.line).text;
@@ -58,7 +58,7 @@ export function activate(context: vscode.ExtensionContext)
 			let signature: vscode.SignatureHelp = new vscode.SignatureHelp();
 
 			let foundDefinition : FunctionDefinition = FunctionDefinition.GetFunctionDefinition(lineText);
-			if (foundDefinition === null) { return signature;}
+			if (foundDefinition === null || foundDefinition.m_name === "empty") { return null;}
 			
 			signature.signatures = 
 			[{

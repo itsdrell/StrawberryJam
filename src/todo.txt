@@ -1,5 +1,4 @@
 --------------------------------------------------------------------------------------------------------
  T O D O
 --------------------------------------------------------------------------------------------------------
-Fix bug where there is an empty summary box once you backspace a popup
 Update once namespace changes go in for strawberry since it will probably break
